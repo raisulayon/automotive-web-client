@@ -16,30 +16,17 @@ const AddProduct = () => {
         const newCar={photo, name, brand_name, type, price, description, ratings};
         console.log(newCar);
 
-        // fetch('http://localhost:5000/cars', {
-        //     method:"POST",
-        //     headers:{
-        //         'content-type':'application.json'
-        //     },
-        //     body:JSON.stringify(newCar)
-        // })
-        // .then(res=>res.json())
-        // .then(data=>{
-        //     console.log(data);
-        // })
-
-        fetch('http://localhost:5000/coffee', {
-            method:"POST",
-            headers:{
-              'content-type':'application/json'
-            },
-            body:JSON.stringify(newCoffee)
-          })
-          .then(res=>res.json())
-          .then(data=>.{
+        fetch('http://localhost:5000/cars', {
+          method: 'POST',
+          headers: {
+              'content-type': 'application/json'
+          },
+          body: JSON.stringify(newCar)
+        })
+        .then(res=>res.json())
+        .then(data=>{
             console.log(data);
-            if(data.insertedId
-              ){
+            if(data.insertedId){
               Swal.fire({
                 title: 'Success!',
                 text: 'Item Added',
@@ -48,9 +35,8 @@ const AddProduct = () => {
               })
             }
             form.reset();
-          })
-        }
-    }
+        })
+      }
 
   return (
     <div className="bg-[#f4f3f0] p-24">
